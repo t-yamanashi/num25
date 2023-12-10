@@ -1,0 +1,19 @@
+<div  class="w-28 h-28 m-2 bg-red-200 text-center">
+  <p class="pt-7 text-5xl text-red-700 "><%= @question %></p>
+</div>
+<.link href="/users" class="pt-7 text-5xl ">スタート</.link>
+<p class="pt-7 text-5xl text-red-700 "><%= @time %></p>
+<br>
+<%= for {s, i} <- Enum.with_index(@num, 1) do %>
+  <%= if Enum.find_index(@ok_num, fn x -> Integer.to_string(s) == x end) == nil do %>
+    <div phx-click="buttno" phx-value-no={s}  class="float-left w-28 h-28 m-2 bg-blue-200 text-center ">
+      <p class="pt-7 text-5xl text-blue-700 "><%= s %></p>
+    </div>
+  <% else %>
+    <div  class="float-left w-28 h-28 m-2 bg-blue-100 text-center ">
+    </div>
+  <% end %>
+  <%= if rem(i, 5) == 0 do  %>
+    <br>
+  <% end %>
+<% end %>
